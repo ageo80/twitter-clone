@@ -1,0 +1,25 @@
+.banner {
+    background: transparent url('http://i.4cdn.org/w/1404395344917.jpg') 0 0 no-repeat fixed;
+    text-align: center;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://i.4cdn.org/w/1404395344917.jpg', sizingMethod='scale');
+
+    height: 400px;
+    width: 100%;
+    margin-bottom: 3em;
+    display: table;
+}
+
+.banner-head {
+    display: table-cell;
+    vertical-align: middle;
+    margin-bottom: 0;
+    font-size: 3em;
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 2px 2px black;
+}
+
+.padding-box {
+    padding: 20px 30px;
+}
