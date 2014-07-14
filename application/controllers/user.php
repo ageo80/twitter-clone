@@ -4,6 +4,10 @@
     public function view($slug = FALSE){
       
     }
+
+    public function register(){
+      
+    }
   }
 
 ?>
