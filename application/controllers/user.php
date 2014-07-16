@@ -11,8 +11,22 @@
       
     }
 
+    public function login(){
+      if($this->user_model->login_user()){
+        $this->user_model->set_user();
+        $this->load->view('templates/header');
+        $this->load->view('templates/nav');
+        $this->load->view('home');
+        $this->load->view('templates/footer');
+      } else {
+        $this->load->view('templates/header');
+        $this->load->view('templates/nav');
+        $this->load->view('user/register');
+        $this->load->view('templates/footer');
+      }
+    }
+
     public function register(){
-      $this->load->helper('form');
       $this->load->library('form_validation');
 
       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|is_unique[user.username]|alpha_dash');

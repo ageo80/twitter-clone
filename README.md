@@ -16,3 +16,7 @@ Installation Instructions:
 4. Upload all files and folders to your server except for the ReadMe files, the license file, and the SQL Queries folder.
 5. Finished! Navigate your browser to your server and you should see the homepage.
 
+Hosted Instance
+-------------
+A hosted instance of this application is [available here](http://zipper.jrmiller.co/). Please note that the application is still in development and there is no guarantee anything will work. Please do not enter any real information into the application, as your data is not guaranteed to be secure (although it should be pretty secure).
+

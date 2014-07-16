@@ -18,10 +18,9 @@
 
     public function set_user() {
       $this->load->helper('url');
-      $this->load->helper('security');
 
       $slug = url_title($this->input->post('username'), 'dash', TRUE);
-      $password = hash ( "sha256", $this->input->post('password') . '_' .  $this->input->post('username'));
+      $password = hash('sha256', $this->input->post('password') . '_' .  $this->input->post('username'));
       $passwordVersion = 1;
 
       $data = array(
@@ -33,6 +32,14 @@
       );
 
       return $this->db->insert('user', $data);
+    }
+
+    public function login_user() {
+      $password = hash('sha256', $this->input->post('password') . '_' .  $this->input->post('username'));
+
+      $query = $this->db->get_where('user', array('username' => $this->input->post('username'), 'password' => $password));
+      
+      return $query->row_array();
     }
   }
 
