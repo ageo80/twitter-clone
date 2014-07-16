@@ -16,7 +16,7 @@
           </fieldset>
         </form>
     <?php ENDIF; ?>
-    <a href="/" class="pure-menu-heading">Zipper - A Twitter Clone</a>
+    <a href="/" class="pure-menu-heading">(Not) Twitter - A Twitter Clone</a>
     <ul class = "navigation">
         <li class="pure-menu-selected"><a href="/">Home</a></li>
         <?php if($this->session->userdata('logged_in')) : ?>
