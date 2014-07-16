@@ -1,7 +1,8 @@
 <?php
-  class User extends CI_Model {
+  class User_model extends CI_Model {
 
     public function __construct(){
+      parent::__construct();
       $this->load->database();
     }
 
@@ -20,17 +21,18 @@
       $this->load->helper('security');
 
       $slug = url_title($this->input->post('username'), 'dash', TRUE);
-      $password = $this->input->post('password');
+      $password = hash ( "sha256", $this->input->post('password') . '_' .  $this->input->post('username'));
       $passwordVersion = 1;
 
       $data = array(
         'username' => $this->input->post('username'),
         'email' => $this->input->post('email'),
         'slug' => $slug,
-        'text' => $this->input->post('text')
+        'password' => $password,
+        'password_version' => 1
       );
 
-      return $this->db->insert('news', $data);
+      return $this->db->insert('user', $data);
     }
   }
 

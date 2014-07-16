@@ -8,13 +8,13 @@
         echo form_open('/register', $attributes); 
       ?>
         <div class="pure-control-group">
-          <label for = "username">Username</label> <input id = "username" name = "username" type = "text" placeholder = "Username">
+          <label for = "username">Username</label> <input id = "username" name = "username" type = "text" placeholder = "Username" value="<?php echo set_value('username'); ?>">
         </div>
         <div class="pure-control-group">
-          <label for = "email">Email</label> <input id = "email" name = "email" type = "text"  placeholder = "Email">
+          <label for = "email">Email</label> <input id = "email" name = "email" type = "text"  placeholder = "Email" value="<?php echo set_value('email'); ?>">
         </div>
         <div class="pure-control-group">
-          <label for = "password">Password</label> <input id = "password" name = "password" type = "password" placeholder = "Password">
+          <label for = "password">Password</label> <input id = "password" name = "password" type = "password" placeholder = "Password" value="<?php echo set_value('password'); ?>">
         </div>
         <div class="pure-controls">
           <input class="pure-button pure-button-primary" type = "submit" value = "Submit">

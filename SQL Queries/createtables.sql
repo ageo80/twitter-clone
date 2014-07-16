@@ -6,9 +6,9 @@ CREATE TABLE user (
   password varchar(225) NOT NULL,
   password_version TINYINT NOT NULL,
   PRIMARY KEY (id),
-  KEY slug (slug),
-  KEY slug (username),
-  KEY slug (email)
+  KEY (slug),
+  KEY (username),
+  KEY (email)
 );
 
 CREATE TABLE user_meta (
@@ -27,7 +27,6 @@ CREATE TABLE tweet (
   user_id int(11) NOT NULL,
   tweet TEXT,
   dateCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  lastEdited TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) 
     REFERENCES user(id)
