@@ -12,8 +12,15 @@
     }
 
     public function login(){
-      if($this->user_model->login_user()){
-        $this->user_model->set_user();
+      if($user_info = $this->user_model->login_user()){
+        $user_session_data = array(
+          'id'  => $user_info['id'],
+          'username'  => $user_info['username'],
+          'email'     => $user_info['email'],
+          'logged_in' => TRUE
+        );
+
+        $this->session->set_userdata($user_session_data);
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
         $this->load->view('home');
