@@ -12,6 +12,8 @@
     }
 
     public function login(){
+      $this->load->helper('url');
+      
       if($user_info = $this->user_model->login_user()){
         $user_session_data = array(
           'id'  => $user_info['id'],
@@ -21,14 +23,11 @@
         );
 
         $this->session->set_userdata($user_session_data);
-        $this->load->view('templates/header');
-        $this->load->view('templates/nav');
-        $this->load->view('home');
-        $this->load->view('templates/footer');
+        redirect('/', 'location');
       } else {
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
-        $this->load->view('user/register');
+        $this->load->view('home');
         $this->load->view('templates/footer');
       }
     }
