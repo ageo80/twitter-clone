@@ -21,6 +21,7 @@
         <li class="pure-menu-selected"><a href="/">Home</a></li>
         <?php if($this->session->userdata('logged_in')) : ?>
             <li><a href="/account">Account</a></li>
+            <li><a href="/logout">Log out</a></li>
             <li class = "welcome">Welcome <?php echo $this->session->userdata('username'); ?>.</li>
         <?php else : ?>
             <li><a href="/register">Sign Up</a></li>

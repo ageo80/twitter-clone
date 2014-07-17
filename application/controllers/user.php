@@ -33,7 +33,14 @@
       }
     }
 
+    public function logout(){
+      $this->load->helper('url');
+      $this->session->sess_destroy();
+      redirect('/', 'location');
+    }
+
     public function register(){
+      $this->load->helper('url');
       $this->load->library('form_validation');
 
       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|is_unique[user.username]|alpha_dash');
@@ -47,10 +54,7 @@
         $this->load->view('templates/footer');
       } else {
         $this->user_model->set_user();
-        $this->load->view('templates/header');
-        $this->load->view('templates/nav');
-        $this->load->view('home');
-        $this->load->view('templates/footer');
+        redirect('/', 'location');
       }
     }
   }
