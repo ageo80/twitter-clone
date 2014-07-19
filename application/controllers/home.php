@@ -22,7 +22,10 @@ class Home extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('templates/nav');
 		if($this->session->userdata('logged_in')){
-			$this->load->view('stream');
+			$this->load->model('follow_model');
+			$this->load->model('tweet_model');
+			$data['stream_tweets'] = $this->tweet_model->get_tweets_by_follow_array($this->follow_model->get_follows_by_source_id($this->session->userdata('id')));
+			$this->load->view('stream', $data);
 		} else {
 			$this->load->view('home');
 		}

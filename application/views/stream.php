@@ -19,18 +19,16 @@
   <div class="pure-u-1 pure-u-md-1-2">
     <div class = "padding-box">
       <h2>Tweets</h2>
-      <div class = "tweet">
-        <div class = "tweet-user-info">@user - <span class = "time">6m ago</span></div>
-        <div class = "tweet-content">This is the content of the tweet.</div>
-      </div>
-      <div class = "tweet">
-        <div class = "tweet-user-info">@user - <span class = "time">6m ago</span></div>
-        <div class = "tweet-content">This is the content of the tweet.</div>
-      </div>
-      <div class = "tweet">
-        <div class = "tweet-user-info">@user - <span class = "time">6m ago</span></div>
-        <div class = "tweet-content">This is the content of the tweet.</div>
-      </div>
+      <?php if($stream_tweets) : ?>
+        <?php foreach($stream_tweets as $stream_tweet) : ?>
+          <div class = "tweet">
+            <div class = "tweet-user-info">@user - <span class = "time">6m ago</span></div>
+            <div class = "tweet-content"><?php echo $stream_tweet['tweet']; ?></div>
+          </div>
+        <?php endforeach; ?>
+      <?php else : ?>
+        <p>No tweets yet. Follow some users!</p>
+      <?php endif; ?>
     </div>
   </div>
   <div class="pure-u-1 pure-u-md-1-4">
