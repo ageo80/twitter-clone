@@ -41,6 +41,7 @@
     public function register(){
       $this->load->helper('url');
       $this->load->library('form_validation');
+      $this->load->model('follow_model');
 
       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|is_unique[user.username]|alpha_dash');
       $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
@@ -53,6 +54,19 @@
         $this->load->view('templates/footer');
       } else {
         $this->user_model->set_user();
+
+        $user_info = $this->user_model->login_user();
+        $user_session_data = array(
+          'id'  => $user_info['id'],
+          'username'  => $user_info['username'],
+          'email'     => $user_info['email'],
+          'logged_in' => TRUE
+        );
+
+        $this->session->set_userdata($user_session_data);
+
+        $this->follow_model->set_first_follow();
+
         redirect('/', 'location');
       }
     }

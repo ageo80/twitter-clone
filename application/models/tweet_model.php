@@ -20,7 +20,7 @@
       return $this->db->insert('tweet', $data);
     }
 
-    public function get_tweet_by_user_id($user_id){
+    public function get_tweets_by_user_id($user_id){
       $query = $this->db->get_where('tweet', array('user_id' => $user_id));
 
       foreach ($query->result_array() as $tweet){
