@@ -35,23 +35,25 @@
     }
 
     public function get_follows_by_source_id($source_id){
+      $follows = FALSE;
       $query = $this->db->get_where('follow', array('source_id' => $source_id));
 
       foreach ($query->result_array() as $follow){
-        $arr[] = $follow;
+        $follows[] = $follow;
       }
 
-      return $arr;
+      return $follows;
     }
 
     public function get_follows_by_target_id($target_id){
+      $follows = FALSE;
       $query = $this->db->get_where('follow', array('target_id' => $target_id));
 
       foreach ($query->result_array() as $follow){
-        $arr[] = $follow;
+        $follows[] = $follow;
       }
 
-      return $arr;
+      return $follows;
     }
   }
 

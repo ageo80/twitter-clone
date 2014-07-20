@@ -32,23 +32,25 @@
 
     public function get_tweets_by_follow_array($follow_array){
       $tweets = FALSE;
-      
+
       $this->db->from('tweet');
       $i = 0;
-      foreach($follow_array as $follow){
-        if($i === 0){
-          $this->db->where('user_id', $follow['target_id']);
-        } else {
-          $this->db->or_where('user_id', $follow['target_id']); 
+      if($follow_array){
+        foreach($follow_array as $follow){
+          if($i === 0){
+            $this->db->where('user_id', $follow['target_id']);
+          } else {
+            $this->db->or_where('user_id', $follow['target_id']); 
+          }
+
+          $i++;
         }
+        $this->db->order_by("dateCreated", "desc"); 
+        $query = $this->db->get();
 
-        $i++;
-      }
-      $this->db->order_by("dateCreated", "desc"); 
-      $query = $this->db->get();
-
-      foreach ($query->result_array() as $tweet){
-        $tweets[] = $tweet;
+        foreach ($query->result_array() as $tweet){
+          $tweets[] = $tweet;
+        }
       }
 
       return $tweets;

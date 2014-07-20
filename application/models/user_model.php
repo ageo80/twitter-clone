@@ -6,7 +6,7 @@
       $this->load->database();
     }
 
-    public function get_user(){
+    public function get_user($slug = FALSE){
       if($slug === FALSE){
         //no user, return nothing
         return null;

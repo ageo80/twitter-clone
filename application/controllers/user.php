@@ -8,7 +8,17 @@
     }
 
     public function view($slug = FALSE){
-      
+      $this->load->model('tweet_model');
+
+      $data['profile_user'] = $this->user_model->get_user($slug);
+      if($data['profile_user']){
+        $data['profile_tweets'] = $this->tweet_model->get_tweets_by_user_id($data['profile_user']['id']);
+      }
+
+      $this->load->view('templates/header');
+      $this->load->view('templates/nav');
+      $this->load->view('user/profile', $data);
+      $this->load->view('templates/footer');
     }
 
     public function login(){
