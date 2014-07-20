@@ -54,7 +54,7 @@
       $this->load->model('follow_model');
 
       $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|is_unique[user.username]|alpha_dash');
-      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
+      $this->form_validation->set_rules('email', 'Email', 'trim|xss_clean|required|valid_email|is_unique[user.email]');
       $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
 
       if ($this->form_validation->run() == FALSE) {

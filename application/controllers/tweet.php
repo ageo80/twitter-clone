@@ -16,7 +16,7 @@
       $this->load->library('form_validation');
 
       if($this->session->userdata('logged_in')){
-        $this->form_validation->set_rules('tweet', 'Tweet', 'trim|required|max_length[140]');
+        $this->form_validation->set_rules('tweet', 'Tweet', 'trim|xss_clean|required|max_length[140]');
         if ($this->form_validation->run() == FALSE) {
           //didn't pass validation
           $this->load->view('templates/header');
