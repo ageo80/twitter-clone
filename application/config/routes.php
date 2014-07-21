@@ -41,6 +41,7 @@
 $route['register'] = 'user/register';
 $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
+$route['account'] = 'user/account';
 $route['tweet'] = 'tweet/create_tweet';
 $route['(:any)'] = 'user/view/$1';
 $route['default_controller'] = "home";
