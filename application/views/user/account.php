@@ -8,16 +8,16 @@
         echo form_open('/account', $attributes); 
       ?>
         <div class="pure-control-group">
-          <label for = "username">Username</label> <input id = "username" name = "username" type = "text" placeholder = "Username" value="<?php echo set_value('username'); ?>">
+          <label for = "username">Username</label> <input id = "username" name = "username" type = "text" placeholder = "Username" value="<?php echo $this->session->userdata('username'); ?>" disabled>
         </div>
         <div class="pure-control-group">
-          <label for = "email">Email</label> <input id = "email" name = "email" type = "text"  placeholder = "Email" value="<?php echo set_value('email'); ?>">
+          <label for = "email">Email</label> <input id = "email" name = "email" type = "text"  placeholder = "Email" value="<?php if(set_value('email')){ echo set_value('email'); } else { echo $this->session->userdata('email'); } ?>">
         </div>
         <div class="pure-control-group">
           <label for = "password">Password</label> <input id = "password" name = "password" type = "password" placeholder = "Password" value="<?php echo set_value('password'); ?>">
         </div>
         <div class="pure-control-group">
-          <label for = "old-password">Old Password</label> <input id = "old-password" name = "old-password" type = "password" placeholder = "Password" value="<?php echo set_value('old-password'); ?>">
+          <label for = "old-password">Old Password</label> <input id = "old-password" name = "old-password" type = "password" placeholder = "Old Password" value="<?php echo set_value('old-password'); ?>">
         </div>
         <div class="pure-controls">
           <input class="pure-button pure-button-primary" type = "submit" value = "Save">
@@ -34,9 +34,9 @@
         echo form_open('/account', $attributes); 
       ?>
         <label for = "website">Website</label>
-        <input id = "website" name = "website" type = "text" placeholder = "Website" value="<?php echo set_value('website'); ?>">
+        <input id = "website" name = "website" type = "text" placeholder = "Website" value="<?php if(set_value('website')){ echo set_value('website'); } else { echo $user_meta_array['website']; } ?>">
         <label for = "about">About You</label>
-        <textarea id = "about" name = "about" placeholder = "About you..."><?php echo set_value('about'); ?></textarea>
+        <textarea id = "about" name = "about" placeholder = "About you..."><?php if(set_value('about')){ echo set_value('about'); } else { echo $user_meta_array['about']; } ?></textarea>
         <input class="pure-button pure-button-primary" type = "submit" value = "Save">
       </form>
     </div>

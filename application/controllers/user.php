@@ -26,6 +26,11 @@
 
       $data['user_meta_array'] = $this->user_meta_model->get_user_meta_by_user_id($this->session->userdata('id'));
 
+      if(!$data['user_meta_array']){
+        $data['user_meta_array']['website'] = '';
+        $data['user_meta_array']['about'] = '';
+      }
+
       $this->load->view('templates/header');
       $this->load->view('templates/nav');
       $this->load->view('user/account', $data);
