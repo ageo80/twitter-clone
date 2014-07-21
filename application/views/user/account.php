@@ -17,7 +17,7 @@
           <label for = "password">Password</label> <input id = "password" name = "password" type = "password" placeholder = "Password" value="<?php echo set_value('password'); ?>">
         </div>
         <div class="pure-control-group">
-          <label for = "old-password">Old Password</label> <input id = "old-password" name = "old-password" type = "old-password" placeholder = "Password" value="<?php echo set_value('old-password'); ?>">
+          <label for = "old-password">Old Password</label> <input id = "old-password" name = "old-password" type = "password" placeholder = "Password" value="<?php echo set_value('old-password'); ?>">
         </div>
         <div class="pure-controls">
           <input class="pure-button pure-button-primary" type = "submit" value = "Save">
