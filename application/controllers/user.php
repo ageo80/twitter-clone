@@ -102,6 +102,25 @@
         redirect('/', 'location');
       }
     }
+
+    public function save(){
+      $this->load->helper('url');
+      $this->load->library('form_validation');
+
+      $this->form_validation->set_rules('email', 'Email', 'trim|xss_clean|required|valid_email|is_unique[user.email]');
+      $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
+
+      if ($this->form_validation->run() == FALSE) {
+        $this->account();
+      } else {
+        if($this->user_model->save_user()){
+          $this->session->set_userdata('email', $this->input->post('email'));
+          redirect('/account', 'location');
+        } else {
+          //old password was wrong (or database error)
+        }
+      }
+    }
   }
 
 ?>

@@ -44,6 +44,28 @@
       return $this->db->insert('user', $data);
     }
 
+    public function save_user() {
+      $user = $this->get_user($this->session->userdata('id'));
+
+      $password = hash('sha256', $this->input->post('old-password') . '_' .  $user['username']);
+
+      if($user['password'] === $password) {
+        if($this->input->post('password')){
+          $password = hash('sha256', $this->input->post('password') . '_' .  $user['username']);
+        }
+
+        $data = array(
+          'password' => $password,
+          'email' => $this->input->post('email')
+        );
+
+        return $this->db->update('user', $data, array('id' => $user['id']));
+        
+      } else {
+        return false;
+      }
+    }
+
     public function login_user() {
       $password = hash('sha256', $this->input->post('password') . '_' .  $this->input->post('username'));
 
