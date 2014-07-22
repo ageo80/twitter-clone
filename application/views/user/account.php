@@ -31,7 +31,7 @@
       <?php echo validation_errors(); ?>
       <?php
         $attributes = array('class' => 'pure-form pure-form-stacked', 'id' => 'profile-form');
-        echo form_open('/account', $attributes); 
+        echo form_open('/saveprofile', $attributes); 
       ?>
         <label for = "website">Website</label>
         <input id = "website" name = "website" type = "text" placeholder = "Website" value="<?php if(set_value('website')){ echo set_value('website'); } else { echo $user_meta_array['website']; } ?>">

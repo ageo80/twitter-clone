@@ -24,7 +24,20 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$this->load->model('follow_model');
 			$this->load->model('tweet_model');
-			$data['stream_tweets'] = $this->tweet_model->get_tweets_by_follow_array($this->follow_model->get_follows_by_source_id($this->session->userdata('id')));
+			$this->load->model('user_model');
+
+			$tweets = $this->tweet_model->get_tweets_by_follow_array($this->follow_model->get_follows_by_source_id($this->session->userdata('id')));
+
+			if($tweets){
+				foreach ($tweets as $tweet) {
+					$tweet['user'] = $this->user_model->get_user($tweet['user_id']);
+					$stream_tweets[] = $tweet;
+				}
+				$data['stream_tweets'] = $stream_tweets;
+			} else {
+				$data['stream_tweets'] = FALSE;
+			}
+
 			$this->load->view('stream', $data);
 		} else {
 			$this->load->view('home');

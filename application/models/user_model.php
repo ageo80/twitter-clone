@@ -6,13 +6,23 @@
       $this->load->database();
     }
 
-    public function get_user($slug = FALSE){
+    public function get_user_by_slug($slug = FALSE){
       if($slug === FALSE){
         //no user, return nothing
         return null;
       }
 
       $query = $this->db->get_where('user', array('slug' => $slug));
+      return $query->row_array();
+    }
+
+    public function get_user($id = FALSE){
+      if($id === FALSE){
+        //no user, return nothing
+        return null;
+      }
+
+      $query = $this->db->get_where('user', array('id' => $id));
       return $query->row_array();
     }
 

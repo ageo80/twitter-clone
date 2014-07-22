@@ -18,11 +18,11 @@
       if ($this->form_validation->run() == FALSE) {
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
-        $this->load->view('user/profile');
+        $this->load->view('user/account');
         $this->load->view('templates/footer');
       } else {
-        $this->user__meta_model->save_user_meta();
-        redirect('/', 'location');
+        $this->user_meta_model->save_user_meta();
+        redirect('/account', 'location');
       }
     }
   }

@@ -21,7 +21,7 @@
     }
 
     public function get_tweets_by_user_id($user_id){
-      $query = $this->db->get_where('tweet', array('user_id' => $user_id));
+      $query = $this->db->order_by('dateCreated', 'desc')->get_where('tweet', array('user_id' => $user_id));
 
       foreach ($query->result_array() as $tweet){
         $arr[] = $tweet;

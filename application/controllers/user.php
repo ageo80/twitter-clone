@@ -9,10 +9,16 @@
 
     public function view($slug = FALSE){
       $this->load->model('tweet_model');
+      $this->load->model('user_meta_model');
 
-      $data['profile_user'] = $this->user_model->get_user($slug);
+      $data['profile_user'] = $this->user_model->get_user_by_slug($slug);
       if($data['profile_user']){
         $data['profile_tweets'] = $this->tweet_model->get_tweets_by_user_id($data['profile_user']['id']);
+        $data['profile_user_meta'] = $this->user_meta_model->get_user_meta_by_user_id($data['profile_user']['id']);
+        if(!$data['profile_user_meta']){
+          $data['profile_user_meta']['website'] = '';
+          $data['profile_user_meta']['about'] = '';
+        }
       }
 
       $this->load->view('templates/header');
