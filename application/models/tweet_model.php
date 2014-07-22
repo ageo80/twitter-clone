@@ -21,13 +21,15 @@
     }
 
     public function get_tweets_by_user_id($user_id){
+      $tweets = FALSE;
+      
       $query = $this->db->order_by('dateCreated', 'desc')->get_where('tweet', array('user_id' => $user_id));
 
       foreach ($query->result_array() as $tweet){
-        $arr[] = $tweet;
+        $tweets[] = $tweet;
       }
 
-      return $arr;
+      return $tweets;
     }
 
     public function get_tweets_by_follow_array($follow_array){

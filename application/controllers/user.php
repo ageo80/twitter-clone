@@ -10,6 +10,7 @@
     public function view($slug = FALSE){
       $this->load->model('tweet_model');
       $this->load->model('user_meta_model');
+      $this->load->model('follow_model');
 
       $data['profile_user'] = $this->user_model->get_user_by_slug($slug);
       if($data['profile_user']){
@@ -19,6 +20,7 @@
           $data['profile_user_meta']['website'] = '';
           $data['profile_user_meta']['about'] = '';
         }
+        $data['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $data['profile_user']['id']);
       }
 
       $this->load->view('templates/header');

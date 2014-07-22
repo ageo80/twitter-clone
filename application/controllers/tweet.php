@@ -28,7 +28,6 @@
           $this->tweet_model->set_tweet();
           redirect('/', 'location');
         }
-        //post tweet
       } else {
         //login error
       }

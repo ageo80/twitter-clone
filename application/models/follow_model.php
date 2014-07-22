@@ -14,10 +14,19 @@
     public function set_follow() {
       $data = array(
         'source_id' => $this->session->userdata('id'),
-        'target_id' => $this->input->post('target_id'),
+        'target_id' => $this->input->post('target-id'),
       );
 
       return $this->db->insert('follow', $data);
+    }
+
+    public function delete_follow() {
+      $data = array(
+        'source_id' => $this->session->userdata('id'),
+        'target_id' => $this->input->post('target-id'),
+      );
+      
+      return $this->db->delete('follow', $data);
     }
 
     public function set_first_follow() {
