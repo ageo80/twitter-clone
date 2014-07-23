@@ -7,8 +7,27 @@
       $this->load->model('tweet_model');
     }
 
-    public function view($id = FALSE){
-      
+    public function view($tweet_id = FALSE){
+      $this->load->model('user_meta_model');
+      $this->load->model('follow_model');
+      $this->load->model('user_model');
+
+      if($tweet_id){
+        $data['tweet'] = $this->tweet_model->get_tweet($tweet_id);
+        if($data['tweet']){
+          $data['profile_user'] = $this->user_model->get_user($data['tweet']['user_id']);
+          $data['profile_user_meta'] = $this->user_meta_model->get_user_meta_by_user_id($data['profile_user']['id']);
+          if(!$data['profile_user_meta']){
+            $data['profile_user_meta']['website'] = '';
+            $data['profile_user_meta']['about'] = '';
+          }
+          $data['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $data['profile_user']['id']);
+        }
+      }
+      $this->load->view('templates/header');
+      $this->load->view('templates/nav');
+      $this->load->view('tweet/view', $data);
+      $this->load->view('templates/footer');
     }
 
     public function create_tweet(){

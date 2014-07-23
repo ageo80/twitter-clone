@@ -47,6 +47,7 @@ $route['saveaccount'] = 'user/save';
 $route['tweet'] = 'tweet/create_tweet';
 $route['follow'] = 'follow/follow_user';
 $route['unfollow'] = 'follow/unfollow_user';
+$route['tweet/(:any)'] = 'tweet/view/$1';
 $route['(:any)'] = 'user/view/$1';
 $route['default_controller'] = "home";
 $route['404_override'] = '';
