@@ -16,6 +16,7 @@ CREATE TABLE user_meta (
   user_id int(11) NOT NULL,
   website varchar(225) NOT NULL,
   about TEXT NOT NULL,
+  avatar VARCHAR(225) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) 
     REFERENCES user(id)

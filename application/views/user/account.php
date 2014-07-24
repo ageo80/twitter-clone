@@ -31,12 +31,20 @@
       <?php echo validation_errors(); ?>
       <?php
         $attributes = array('class' => 'pure-form pure-form-stacked', 'id' => 'profile-form');
-        echo form_open('/saveprofile', $attributes); 
+        echo form_open_multipart('/saveprofile', $attributes); 
       ?>
+        <label for = "avatar">Avatar</label>
+        <?php if($user_meta_array['avatar']) : ?>
+          <img src = "/assets/img/avatars/<?php echo $user_meta_array['avatar']; ?>" class = "pure-img tweet-avatar">
+        <?php else : ?>
+          <img src = "/assets/img/avatars/default.jpg" class = "pure-img tweet-avatar">
+        <?php endif; ?>
+        <input id = "avatar" name = "avatar" type = "file" >
         <label for = "website">Website</label>
         <input id = "website" name = "website" type = "text" placeholder = "Website" value="<?php if(set_value('website')){ echo set_value('website'); } else { echo $user_meta_array['website']; } ?>">
         <label for = "about">About You</label>
         <textarea id = "about" name = "about" placeholder = "About you..."><?php if(set_value('about')){ echo set_value('about'); } else { echo $user_meta_array['about']; } ?></textarea>
+        
         <input class="pure-button pure-button-primary" type = "submit" value = "Save">
       </form>
     </div>

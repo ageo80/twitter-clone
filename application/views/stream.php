@@ -21,9 +21,18 @@
       <h2>Tweets</h2>
       <?php if($stream_tweets) : ?>
         <?php foreach($stream_tweets as $stream_tweet) : ?>
-          <div class = "tweet">
-            <div class = "tweet-user-info"><a href = "/<?php echo $stream_tweet['user']['slug'];?>">@<?php echo $stream_tweet['user']['username']; ?></a> - <span class = "time"><a href = "/tweet/<?php echo $stream_tweet['id']; ?>"><?php echo timespan(strtotime($stream_tweet['dateCreated']), time()); ?> Ago</a></span></div>
-            <div class = "tweet-content"><b><?php echo $stream_tweet['tweet']; ?></b></div>
+          <div class="pure-g">
+            <div class="pure-u-1-4">
+              <?php if($stream_tweet['user_meta']['avatar']) : ?>
+                <img src = "/assets/img/avatars/<?php echo $stream_tweet['user_meta']['avatar']; ?>" class = "pure-img tweet-avatar">
+              <?php else : ?>
+                <img src = "/assets/img/avatars/default.jpg" class = "pure-img tweet-avatar">
+              <?php endif; ?>
+            </div>
+            <div class = "pure-u-3-4">
+              <div class = "tweet-user-info"><a href = "/<?php echo $stream_tweet['user']['slug'];?>">@<?php echo $stream_tweet['user']['username']; ?></a> - <span class = "time"><a href = "/tweet/<?php echo $stream_tweet['id']; ?>"><?php echo timespan(strtotime($stream_tweet['dateCreated']), time()); ?> Ago</a></span></div>
+              <div class = "tweet-content"><b><?php echo $stream_tweet['tweet']; ?></b></div>
+            </div>
           </div>
         <?php endforeach; ?>
       <?php else : ?>

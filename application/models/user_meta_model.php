@@ -16,7 +16,8 @@
       $data = array(
         'user_id' => $this->session->userdata('id'),
         'website' => $this->input->post('website'),
-        'about' => $this->input->post('about')
+        'about' => $this->input->post('about'),
+        'avatar' => $this->input->post('avatar_filename')
       );
 
       if($user_meta_array = $this->get_user_meta_by_user_id($this->session->userdata('id'))){

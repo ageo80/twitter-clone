@@ -25,12 +25,19 @@ class Home extends CI_Controller {
 			$this->load->model('follow_model');
 			$this->load->model('tweet_model');
 			$this->load->model('user_model');
+			$this->load->model('user_meta_model');
 
 			$tweets = $this->tweet_model->get_tweets_by_follow_array($this->follow_model->get_follows_by_source_id($this->session->userdata('id')));
 
 			if($tweets){
 				foreach ($tweets as $tweet) {
 					$tweet['user'] = $this->user_model->get_user($tweet['user_id']);
+					$tweet['user_meta'] = $this->user_meta_model->get_user_meta_by_user_id($tweet['user_id']);
+					if(!$tweet['user_meta']){
+	          $tweet['user_meta']['website'] = '';
+	          $tweet['user_meta']['about'] = '';
+	          $tweet['user_meta']['avatar'] = false;
+	        }
 					$stream_tweets[] = $tweet;
 				}
 				$data['stream_tweets'] = $stream_tweets;

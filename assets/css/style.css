@@ -66,3 +66,11 @@ textarea {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(202, 60, 60); /* this is a maroon */
 }
+
+.avatar-padding {
+    padding: 20px 30px 0 0;
+}
+
+.tweet-avatar {
+    height: 75px;
+}

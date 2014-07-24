@@ -19,6 +19,7 @@
         if(!$data['profile_user_meta']){
           $data['profile_user_meta']['website'] = '';
           $data['profile_user_meta']['about'] = '';
+          $data['profile_user_meta']['avatar'] = false;
         }
         $data['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $data['profile_user']['id']);
       }

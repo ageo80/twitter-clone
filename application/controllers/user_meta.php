@@ -11,6 +11,11 @@
       $this->load->helper('url');
       $this->load->library('form_validation');
 
+      $config['upload_path'] = './assets/img/avatars';
+      $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+      $this->load->library('upload', $config);
+
       $this->form_validation->set_rules('website', 'Website', 'trim|xss_clean|prep_url');
       $this->form_validation->set_rules('about', 'About', 'trim|xss_clean|required');
 
@@ -20,6 +25,11 @@
         $this->load->view('user/account');
         $this->load->view('templates/footer');
       } else {
+        if($this->upload->do_upload('avatar')){
+          $avatar_info = $this->upload->data();
+          $_POST['avatar_filename'] = $avatar_info['file_name'];
+        }
+        
         $this->user_meta_model->save_user_meta();
         redirect('/account', 'location');
       }
