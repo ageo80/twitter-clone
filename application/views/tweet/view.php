@@ -4,7 +4,7 @@
       <h2><?php echo $profile_user['username']; ?>'s Profile</h2>
       <p><a href = "<?php echo $profile_user_meta['website']; ?>"><?php echo $profile_user_meta['website']; ?></a></p>
       <p><?php echo $profile_user_meta['about']; ?></p>
-      <?php if($this->session->userdata('id') !== $profile_user['id']) : ?>
+      <?php if($this->session->userdata('id') !== $profile_user['id'] && $this->session->userdata('id')) : ?>
         <?php if($follow) : ?>
           <?php echo validation_errors(); ?>
           <?php
@@ -36,8 +36,8 @@
       <h2>Tweet</h2>
       <?php if($tweet) : ?>
         <div class = "tweet">
-          <div class = "tweet-user-info"><a href = "/<?php echo $profile_user['slug'];?>">@<?php echo $profile_user['username']; ?></a> - <span class = "time"><?php echo timespan(strtotime($profile_tweet['dateCreated']), time()); ?> Ago</span></div>
-          <div class = "tweet-content"><b><?php echo $profile_tweet['tweet']; ?></b></div>
+          <div class = "tweet-user-info"><a href = "/<?php echo $profile_user['slug'];?>">@<?php echo $profile_user['username']; ?></a> - <span class = "time">Tweeted on <?php echo $tweet['dateCreated'] ?></span></div>
+          <div class = "tweet-content"><b><?php echo $tweet['tweet']; ?></b></div>
         </div>
       <?php else : ?>
         <p>Tweet not found.</p>

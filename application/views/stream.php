@@ -22,7 +22,7 @@
       <?php if($stream_tweets) : ?>
         <?php foreach($stream_tweets as $stream_tweet) : ?>
           <div class = "tweet">
-            <div class = "tweet-user-info"><a href = "/<?php echo $stream_tweet['user']['slug'];?>">@<?php echo $stream_tweet['user']['username']; ?></a> - <span class = "time"><?php echo timespan(strtotime($stream_tweet['dateCreated']), time()); ?> Ago</span></div>
+            <div class = "tweet-user-info"><a href = "/<?php echo $stream_tweet['user']['slug'];?>">@<?php echo $stream_tweet['user']['username']; ?></a> - <span class = "time"><a href = "/tweet/<?php echo $stream_tweet['id']; ?>"><?php echo timespan(strtotime($stream_tweet['dateCreated']), time()); ?> Ago</a></span></div>
             <div class = "tweet-content"><b><?php echo $stream_tweet['tweet']; ?></b></div>
           </div>
         <?php endforeach; ?>
