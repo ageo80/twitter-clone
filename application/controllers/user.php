@@ -110,7 +110,13 @@
       $this->load->helper('url');
       $this->load->library('form_validation');
 
-      $this->form_validation->set_rules('email', 'Email', 'trim|xss_clean|required|valid_email|is_unique[user.email]');
+      if($this->input->post('email') !== $this->session->userdata('email')){
+        $extra_validation = '|is_unique[user.email]';
+      } else {
+        $extra_validation = '';
+      }
+
+      $this->form_validation->set_rules('email', 'Email', 'trim|xss_clean|required|valid_email' . $extra_validation);
       $this->form_validation->set_rules('password', 'Password', 'min_length[5]');
 
       if ($this->form_validation->run() == FALSE) {
