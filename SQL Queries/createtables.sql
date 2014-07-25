@@ -15,7 +15,7 @@ CREATE TABLE user_meta (
   id int(11) NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   website varchar(225) NOT NULL,
-  about TEXT NOT NULL,
+  about TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   avatar VARCHAR(225) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) 
@@ -26,7 +26,7 @@ CREATE TABLE user_meta (
 CREATE TABLE tweet (
   id BIGINT NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
-  tweet TEXT,
+  tweet TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   dateCreated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) 
