@@ -13,12 +13,21 @@
     }
 
     public function save_user_meta() {
-      $data = array(
-        'user_id' => $this->session->userdata('id'),
-        'website' => $this->input->post('website'),
-        'about' => $this->input->post('about'),
-        'avatar' => $this->input->post('avatar_filename')
-      );
+      if($this->input->post('avatar_filename')){
+        $data = array(
+          'user_id' => $this->session->userdata('id'),
+          'website' => $this->input->post('website'),
+          'about' => $this->input->post('about'),
+          'avatar' => $this->input->post('avatar_filename')
+        );
+      } else {
+        $data = array(
+          'user_id' => $this->session->userdata('id'),
+          'website' => $this->input->post('website'),
+          'about' => $this->input->post('about'),
+        );
+      }
+      
 
       if($user_meta_array = $this->get_user_meta_by_user_id($this->session->userdata('id'))){
         return $this->db->update('user_meta', $data, array('id' => $user_meta_array['id']));
