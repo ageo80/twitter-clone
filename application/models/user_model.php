@@ -73,6 +73,19 @@
       
       return $query->row_array();
     }
+
+    public function get_random($limit) {
+      $this->db->from('user');
+      $this->db->order_by('id', 'random'); 
+      $this->db->limit($limit); 
+      $query = $this->db->get();
+
+      foreach ($query->result_array() as $user){
+        $users[] = $user;
+      }
+
+      return $users;
+    }
   }
 
 ?>

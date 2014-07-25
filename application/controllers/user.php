@@ -12,6 +12,7 @@
       $this->load->model('user_meta_model');
       $this->load->model('follow_model');
 
+      //get profile info
       $data['profile_user'] = $this->user_model->get_user_by_slug($slug);
       if($data['profile_user']){
         $data['profile_tweets'] = $this->tweet_model->get_tweets_by_user_id($data['profile_user']['id']);
@@ -22,6 +23,19 @@
           $data['profile_user_meta']['avatar'] = false;
         }
         $data['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $data['profile_user']['id']);
+      }
+
+      //get random user info for sidebar
+      $sidebar_users = $this->user_model->get_random(10);
+      foreach($sidebar_users as $sidebar_user){
+        $sidebar_user['user_meta'] = $this->user_meta_model->get_user_meta_by_user_id($sidebar_user['id']);
+        if(!$sidebar_user['user_meta']){
+          $sidebar_user['user_meta']['website'] = '';
+          $sidebar_user['user_meta']['about'] = '';
+          $sidebar_user['user_meta']['avatar'] = false;
+        }
+        $sidebar_user['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $sidebar_user['id']);
+        $data['sidebar_users'][] = $sidebar_user;
       }
 
       $this->load->view('templates/header');

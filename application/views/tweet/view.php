@@ -63,9 +63,6 @@
     </div>
   </div>
   <div class="pure-u-1 pure-u-md-1-4">
-    <div class = "padding-box">
-      <h2>Users to Follow</h2>
-      <p>I guess I'll just list other users here.</p>
-    </div>
+    <?php include_once dirname(__FILE__) .  '/../templates/sidebar.php'; ?>
   </div>
 </div>

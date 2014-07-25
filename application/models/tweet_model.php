@@ -47,7 +47,7 @@
 
           $i++;
         }
-        $this->db->order_by("dateCreated", "desc"); 
+        $this->db->order_by('dateCreated', 'desc'); 
         $query = $this->db->get();
 
         foreach ($query->result_array() as $tweet){

@@ -25,6 +25,20 @@
           $data['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $data['profile_user']['id']);
         }
       }
+
+      //get random user info for sidebar
+      $sidebar_users = $this->user_model->get_random(10);
+      foreach($sidebar_users as $sidebar_user){
+        $sidebar_user['user_meta'] = $this->user_meta_model->get_user_meta_by_user_id($sidebar_user['id']);
+        if(!$sidebar_user['user_meta']){
+          $sidebar_user['user_meta']['website'] = '';
+          $sidebar_user['user_meta']['about'] = '';
+          $sidebar_user['user_meta']['avatar'] = false;
+        }
+        $sidebar_user['follow'] = $this->follow_model->get_follow_by_source_id_and_target_id($this->session->userdata('id'), $sidebar_user['id']);
+        $data['sidebar_users'][] = $sidebar_user;
+      }
+      
       $this->load->view('templates/header');
       $this->load->view('templates/nav');
       $this->load->view('tweet/view', $data);

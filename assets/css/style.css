@@ -71,6 +71,19 @@ textarea {
     padding: 20px 30px 0 0;
 }
 
+.avatar-padding-small {
+    padding: 0px 10px 0 0;
+}
+
+p.no-top-margin-half-bottom {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
 .tweet-avatar {
     height: 75px;
+}
+
+.follow-box{
+    margin-bottom: 20px;
 }
