@@ -10,6 +10,7 @@
     public function save(){
       $this->load->helper('url');
       $this->load->library('form_validation');
+      $user_meta = $this->user_meta_model->get_user_meta_by_user_id($this->session->userdata('id'));
 
       $config['upload_path'] = './assets/img/avatars';
       $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -26,6 +27,12 @@
         $this->load->view('templates/footer');
       } else {
         if($this->upload->do_upload('avatar')){
+          if($user_meta['avatar']){
+            if(file_exists('./assets/img/avatars/' . $user_meta['avatar'])){
+              unlink('./assets/img/avatars/' . $user_meta['avatar']);
+            }
+
+          }
           $avatar_info = $this->upload->data();
           $_POST['avatar_filename'] = $avatar_info['file_name'];
         }

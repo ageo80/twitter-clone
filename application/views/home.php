@@ -7,7 +7,7 @@
   <div class="pure-u-1 pure-u-md-1-3">
     <div class = "padding-box">
       <h2>Step 1: Sign Up</h2>
-      <p><a href = "/user/register">Sign up</a> and create your profile!</p>
+      <p><a href = "/register">Sign up</a> and create your profile!</p>
     </div>
   </div>
   <div class="pure-u-1 pure-u-md-1-3">
