@@ -9,9 +9,6 @@
           <fieldset>
             <input id = "username" name = "username" type = "text" placeholder = "Username" value="<?php echo set_value('username'); ?>">
             <input id = "password" name = "password" type = "password" placeholder = "Password" value="<?php echo set_value('password'); ?>">
-            <label for="remember">
-                <input id="remember" type="checkbox"> Remember me
-            </label>
             <button type="submit" class="pure-button pure-button-primary">Sign in</button>
           </fieldset>
         </form>
