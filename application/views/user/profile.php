@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="pure-u-1-2">
-          <p><a href = "<?php echo $profile_user_meta['website']; ?>"><?php echo $profile_user_meta['website']; ?></a></p>
-          <p><?php echo $profile_user_meta['about']; ?></p>
+          <p><a href = "<?php echo htmlentities($profile_user_meta['website'], FALSE, 'UTF-8'); ?>"><?php echo htmlentities($profile_user_meta['website'], FALSE, 'UTF-8'); ?></a></p>
+          <p><?php echo htmlentities($profile_user_meta['about'], FALSE, 'UTF-8'); ?></p>
           <?php if($this->session->userdata('id') !== $profile_user['id'] && $this->session->userdata('id')) : ?>
             <?php if($follow) : ?>
               <?php echo validation_errors(); ?>
@@ -55,7 +55,7 @@
             </div>
             <div class = "pure-u-3-4">
               <div class = "tweet-user-info"><a href = "/<?php echo $profile_user['slug'];?>">@<?php echo $profile_user['username']; ?></a> - <span class = "time"><a href = "/tweet/<?php echo $profile_tweet['id']; ?>"><?php echo timespan(strtotime($profile_tweet['dateCreated']), time()); ?> Ago</a></span></div>
-              <div class = "tweet-content"><b><?php echo $profile_tweet['tweet']; ?></b></div>
+              <div class = "tweet-content"><b><?php echo htmlentities($profile_tweet['tweet'], FALSE, 'UTF-8'); ?></b></div>
             </div>
           </div>
         <?php endforeach; ?>
