@@ -52,6 +52,7 @@
       if(!$data['user_meta_array']){
         $data['user_meta_array']['website'] = '';
         $data['user_meta_array']['about'] = '';
+        $data['user_meta_array']['avatar'] = FALSE;
       }
 
       $this->load->view('templates/header');

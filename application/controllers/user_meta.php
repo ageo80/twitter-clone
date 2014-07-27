@@ -21,6 +21,14 @@
       $this->form_validation->set_rules('about', 'About', 'trim|xss_clean|required');
 
       if ($this->form_validation->run() == FALSE) {
+        $data['user_meta_array'] = $user_meta;
+
+        if(!$data['user_meta_array']){
+          $data['user_meta_array']['website'] = '';
+          $data['user_meta_array']['about'] = '';
+          $data['user_meta_array']['avatar'] = FALSE;
+        }
+
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
         $this->load->view('user/account');
