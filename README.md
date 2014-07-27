@@ -18,5 +18,11 @@ Installation Instructions:
 
 Hosted Instance
 -------------
-A hosted instance of this application is [available here](http://zipper.jrmiller.co/). Please note that the application is still in development and there is no guarantee anything will work. Please do not enter any real information into the application, as your data is not guaranteed to be secure (although it should be pretty secure).
+A hosted instance of this application is [available here](http://zipper.jrmiller.co/). Please note that the application is incomplete, so there is no guarantee anything will work. Please do not enter any real information into the application, as your data is not guaranteed to be secure (although it should be pretty secure).
+
+Notes
+-----
+This application is no longer in development. It was created over the course of two weeks in order to learn CodeIgniter. [A post about the experience is available on my blog](http://blog.jrmiller.co/project-1-codeigniter).
+
+This application is in no way complete. In particular, error and success messages are not present for many actions.
 
